@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        Teams
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let team of teams; let i=index">
+            <app-team-card 
+                [team]="team" 
+                [teamId]="i"
+                (teamSelected)="onTeamSelected()"
+            ></app-team-card>
+        </li>
+    </ul>
+</div>

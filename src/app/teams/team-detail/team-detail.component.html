@@ -1,0 +1,25 @@
+<div class="card" *ngIf="team!=undefined">
+    <div class="card-body">
+        <h3 class="card-title">Team Name : {{team.name}}</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Tagline : {{team.hiddenTagline}}</h6>
+        <p class="card-text">{{team.description}}</p>
+        <h5> Team Member Info : </h5>
+        <div class="card" *ngFor="let mem of team.members">
+            <div class="card-body">
+                <h5 class="card-title">
+                        Name : {{mem.name}}
+                </h5>
+                <p class="card-text"> Role : {{mem.role}}</p>
+                <p class="card-text">Primary Skill : {{mem.primarySkill}}</p>
+            </div>
+        </div>
+        <div class="row mt-2">
+                <div class="col">
+                        <button class="btn btn-primary" (click)="onTeamEdit()"> Edit </button>
+                </div>
+                <div class="col">
+                        <button class="btn btn-danger" (click)="onTeamDelete()"> Delete </button>
+                </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<h2 *ngIf="!editMode">Register your team here! </h2>
+<h3 *ngIf="editMode"> Update Team Details</h3>
+<form #f="ngForm" (ngSubmit)="onRegister(f)">
+    <div class="form-group">
+          <label for="teamName">Team Name</label>
+          <input type="text" 
+            class="form-control" 
+            name = "teamName"
+            [(ngModel)]="team.name"
+            required>
+        <div > 
+          <label for="teamDesc">Team Description</label>
+          <input type="text" 
+            class="form-control" 
+            id="teamDesc"
+            name="teamDesc"
+            [(ngModel)]="team.description"
+            required>
+        </div>
+        <div >
+            <label for="tagline">Tagline</label>
+            <input type="text" 
+                class="form-control" 
+                id="tagline"
+                name="tagline"
+                required
+                [(ngModel)]="team.hiddenTagline">
+        </div>
+        <div class="mt-2" *ngFor="let mem of members; let i=index">
+            <div class="row">
+                <div class="col">
+                    <input type="text" 
+                        class="form-control"
+                        placeholder="Name"
+                        name="name_{{i}}"
+                        [(ngModel)]="mem.name"
+                        required>
+                </div>
+                <div class="col">
+                    <input type="text" 
+                        class="form-control"
+                        placeholder="Role"
+                        name="role_{{i}}"
+                        [(ngModel)]="mem.role"
+                        required>
+                </div>
+                <div class="col">
+                    <input type="text" 
+                        class="form-control"
+                        placeholder="Primary Skill"
+                        name="primarySkill_{{i}}"
+                        [(ngModel)]="mem.primarySkill"
+                        required>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger" type= "button" (click)="onDeleteMember(i)">Delete</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="button" (click)="onAddMember()">Add Member</button>
+        <div class="mt-2 ">
+            <button type="submit" class="btn btn-success mt-3" [disabled]="!f.valid">Submit</button>
+        </div>
+    </div>
+</form>

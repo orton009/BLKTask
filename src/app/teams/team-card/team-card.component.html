@@ -1,0 +1,5 @@
+<div class="card-body" [routerLink]="[teamId]" routerLinkActive="true" style="cursor : pointer" (click)="onTeamSelected()">
+    <h5 class="card-title">{{team.name}}</h5>
+    <p class="card-text">{{team.description}}</p>
+    <p class="breadcrumb">{{team.hiddenTagline}}</p>
+</div>
